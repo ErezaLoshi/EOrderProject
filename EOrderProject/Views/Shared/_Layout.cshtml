@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EOrder</title>
+     <link rel="stylesheet" href="~/assets/vendor/animate.css/animate.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/assets/vendor/boxicons/css/boxicons.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/glightbox/css/glightbox.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/swiper/swiper-bundle.min.css" />
+
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <header style="padding: 2% 0 2% 0 !important; background-color: rgba(0, 0, 0,0.7) !important; " class="p-5 fixed-top d-flex align-items-center header-transparent">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <div class="logo me-auto">
+                <a class="navbar-brand font-tertiary h3" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo/eOrder.svg" width="120" /></a>
+                @*<h1><a href="index.html">eOrder</a></h1>*@
+            </div>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a class="nav-link scrollto" asp-area="" asp-controller="Menus" asp-action="Index">Order</a></li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+
+            </nav>
+            <br>
+
+          @*  MOS HARRO ME HEK PREJ KOMENTI <ul class="navbar-nav">
+                @await Component.InvokeAsync("ShoppingCartSummary")
+            </ul>*@
+
+@*
+            <partial name="_Identity.cshtml" />*@
+        </div>
+    </header>
+
+    @*<header>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-3">
+    <a class="navbar-brand font-tertiary h3" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo/eOrder.svg" width="100px" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+    aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center" id="navigation">
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" asp-area="" asp-controller="Pizzas" asp-action="Index">Pizza</a>
+    </li>
+    </ul>
+    </div>
+    </nav>
+    </header>*@
+
+    @*<div class="container-fluid">
+    <main role="main" class="pb-3">*@
+    @RenderBody()
+    @*</main>
+    </div>*@
+
+    <footer id="footer">
+        <div class="container">
+            <h3><img src="~/images/logo/eOrder.svg" width="120" /></h3>
+            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; Copyright <strong><span>eOrder</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by LyncFrof
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
