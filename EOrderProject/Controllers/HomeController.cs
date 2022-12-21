@@ -11,6 +11,7 @@ namespace EOrderProject.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            //_service= service;
         }
 
         public IActionResult Index()

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using EOrderProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EOrderProject.Data
@@ -9,5 +10,7 @@ namespace EOrderProject.Data
             : base(options)
         {
         }
+
+        public DbSet<Menu>Menus { get; set; }
     }
 }
