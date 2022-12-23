@@ -29,26 +29,19 @@
         </form>
         <table class="table">
             <thead>
-                <tr>
-@*                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a>
-*@                  <th style="margin-right: 10px">
-
-                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-                    </th>
-                    <th>
-
-                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-                    </th>
-                </tr>
                 <tr class="text-center">
                     <th>Image</th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach(var item in Model)
                 {
                     <tr>
                         <td class="align-middle">

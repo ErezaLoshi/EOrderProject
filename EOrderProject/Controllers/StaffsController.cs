@@ -125,7 +125,7 @@ namespace EOrderProject.Controllers
             }
 
 
-            if (!ModelState.IsValid) return View(staff); 
+            //if (!ModelState.IsValid) return View(staff); 
             
 
             if (error == 0)
@@ -158,7 +158,6 @@ namespace EOrderProject.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Image,Name,Description")] Staff staff, IFormFile ifile, Staff ic)
         {
             int error = 0;
@@ -177,7 +176,7 @@ namespace EOrderProject.Controllers
                 error++;
             }
 
-            if (!ModelState.IsValid) return View(staff);
+            //if (!ModelState.IsValid) return View(staff);
 
             if (id == staff.Id && error == 0)
             {
@@ -204,7 +203,6 @@ namespace EOrderProject.Controllers
 
         // POST: Staffs/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, IFormFile ifile, Staff ic)
         {
 

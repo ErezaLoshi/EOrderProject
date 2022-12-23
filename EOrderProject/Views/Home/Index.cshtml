@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Staff>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -41,6 +43,24 @@
                 <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
             </div>
 
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="member">
+                            <div class="pic"><img src="~/images/@Html.DisplayFor(modelItem => item.Image)" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                                <span>@Html.DisplayFor(modelItem => item.Description)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
 
         </div>
     </section>

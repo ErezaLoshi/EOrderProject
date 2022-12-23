@@ -1,10 +1,18 @@
-﻿@model EOrderProject.Models.Staff
+﻿@model Staff
+@using EOrderProject.Data.Enums;
+
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Item";
+}
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+    <script>location.replace("../../Account/Login");</script>
 }
 
+<!-- ======= Hero Section ======= -->
 <section id="hero">
+    <img src="~/assets/img/slide/dark-bg.jpg" class="img-responsive" />
     <div class="carousel-container">
         <div class="carousel-content">
             <h2 class="animate__animated animate__fadeInDown"><span>Delete</span> Item</h2>
@@ -32,3 +40,4 @@
         </div>
     </div>
 </section>
+<!-- End Hero -->
