@@ -22,6 +22,8 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 //Services Configuration
 builder.Services.AddScoped<IMenusService, MenusService>();
+builder.Services.AddScoped<IStaffsService, StaffsService>();
+
 
 var app = builder.Build();
 
