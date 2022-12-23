@@ -22,7 +22,7 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
             <div class="logo me-auto">
-                <a class="navbar-brand font-tertiary h3" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo/eOrder.svg" width="120" /></a>
+                <a class="navbar-brand font-tertiary h3" asp-area="" asp-controller="Home" asp-action="Index">E-ORDER<img src="" width="120" /></a>
                 @*<h1><a href="index.html">eOrder</a></h1>*@
             </div>
 
@@ -36,45 +36,22 @@
 
             </nav>
             <br>
+             
+       
 
-          @*  MOS HARRO ME HEK PREJ KOMENTI <ul class="navbar-nav">
-                @await Component.InvokeAsync("ShoppingCartSummary")
-            </ul>*@
-
-@*
-            <partial name="_Identity.cshtml" />*@
+        @*    <partial name="_LoginPartial" />*@
+            <partial name="_Identity.cshtml" />
         </div>
     </header>
 
-    @*<header>
-    <nav class="navbar navbar-expand-lg navbar-dark mb-3">
-    <a class="navbar-brand font-tertiary h3" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo/eOrder.svg" width="100px" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-    aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse text-center" id="navigation">
-    <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link" asp-area="" asp-controller="Pizzas" asp-action="Index">Pizza</a>
-    </li>
-    </ul>
-    </div>
-    </nav>
-    </header>*@
-
-    @*<div class="container-fluid">
-    <main role="main" class="pb-3">*@
+    
     @RenderBody()
-    @*</main>
-    </div>*@
+   
 
     <footer id="footer">
         <div class="container">
-            <h3><img src="~/images/logo/eOrder.svg" width="120" /></h3>
+            <a class=" navbar-brand font-tertiary h3">E-ORDER<img src="" width="120" /></a>
+            <br />
             <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
             <div class="social-links">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>

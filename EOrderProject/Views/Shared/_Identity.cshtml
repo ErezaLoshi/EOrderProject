@@ -1,0 +1,57 @@
+﻿
+@inject UserManager<ApplicationUser> UserManager;
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <a asp-controller="Account" asp-action="Login" class="book-a-table-btn scrollto">
+        <i class="bi bi-box-arrow-in-down-right"></i> Login
+    </a>
+<a asp-controller="Account" asp-action="Register" class="book-a-table-btn scrollto">
+    <i class="bi bi-box-arrow-in-down-right"></i> Register
+    </a>
+}
+else
+{
+   @* User profile section*@
+
+    <div class="dropdown">
+        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
+            aria-expanded="false">
+            <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+           
+
+            @if (User.IsInRole("Admin"))
+            {
+              
+                <li>
+                    <a class="dropdown-item" asp-controller="Staffs" asp-action="Index">
+                        <i class="bi bi-people"></i> Staff
+                    </a>
+                </li>
+              
+            }
+        </ul>
+    </div>
+    <form asp-controller="Account" asp-action="Logout">
+        <button class="btn btn-outline-danger my-2 my-sm-0">
+            <i class="bi bi-box-arrow-in-right"></i> Log out
+        </button>
+    </form>
+}
+
+
+
+
+    
+
+
+
+
+              
+            
+     
+   
+  

@@ -8,9 +8,8 @@ namespace EOrderProject.Data.Enums
     {
        Pizza=1,
        FastFood,
-       Pasta,
-       Salad,
-       Drink
+       Pasta
+       
 
     }
 }

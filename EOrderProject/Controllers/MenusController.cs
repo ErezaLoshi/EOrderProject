@@ -25,12 +25,28 @@ namespace EOrderProject.Controllers
         }
 
         // GET: Menus
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder, /*string currentFilter*/ string searchString /*int? pageNumber*/)
         {
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewData["CurrentFilter"] = searchString;
+
+            //if (searchString != null)
+            //{
+            //    pageNumber = 1;
+            //}
+            //else
+            //{
+            //    searchString = currentFilter;
+            //}
+
             var menus = from s in await _service.GetAllAsync()
                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                menus = menus.Where(s => s.Name.Contains(searchString)
+                                       || s.Price.Equals(searchString));
+            }
             switch (sortOrder)
             {
                 case "name_desc":
@@ -52,7 +68,7 @@ namespace EOrderProject.Controllers
                     menus = menus.OrderBy(s => s.Name);
                     break;
             }
-            
+            //int pageSize = 3;
             return View(menus);
         }
         public async Task<IActionResult> Fastfood()
@@ -65,16 +81,7 @@ namespace EOrderProject.Controllers
             var allMenus = await _service.GetAllAsync();
             return View(allMenus);
         }
-        //public async Task<IActionResult> Salad()
-        //{
-        //    var allMenus = await _service.GetAllAsync();
-        //    return View(allMenus);
-        //}
-        //public async Task<IActionResult> Drink()
-        //{
-        //    var allMenus = await _service.GetAllAsync();
-        //    return View(allMenus);
-        //}
+       
 
 
 

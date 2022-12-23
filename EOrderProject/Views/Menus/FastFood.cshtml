@@ -5,28 +5,6 @@
     ViewData["Title"] = "Fastfood Order";
 }
 
-<!-- ======= Hero Section ======= -->
-<section id="hero">
-    <div class="hero-container">
-        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img src="~/assets/img/slide/slide-4.jpg" class="img-responsive" />
-                    <div class="carousel-container">
-                        <div class="carousel-content">
-                            <h2 class="animate__animated"><span>Order</span> Now</h2>
-                            <p class="animate__animated">
-                                Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus
-                                et tempore modi architecto.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Hero -->
 
 
 <main id="main">
@@ -44,8 +22,7 @@
                         <li><a asp-area="" asp-controller="Menus" asp-action="Index">Pizza</a></li>
                         <li><a class="filter-active" asp-area="" asp-controller="Menus" asp-action="Fastfood">Fast Food</a></li>
                         <li><a asp-area="" asp-controller="Menus" asp-action="Pasta">Pastas</a></li>
-                        <li><a asp-area="" asp-controller="Menus" asp-action="Salad">Salads</a></li>
-                        <li><a asp-area="" asp-controller="Menus" asp-action="Drink">Drinks</a></li>
+                      
                     </ul>
                 </div>
             </div>
@@ -64,13 +41,13 @@
                     @if (item.MenuCategory == EOrderProject.Data.Enums.MenuCategory.FastFood)
                     {
                        <div class="col-lg-3 col-sm-5 m-1 mb-5 mt-2">
-                            @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                            {*@
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
                                 <div class="p-2 text-white bg-dark rounded-top border border-bottom-0 border-secondary">
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="text-white"><i class="bi bi-pencil-square"></i></a>
                                     <a asp-action="Delete" asp-route-id="@item.Id" style="float: right !important;" class="text-white"><span>&times;</span></a>
                                 </div>
-                           @* }*@
+                            }
 
 
                             <div class="box">
@@ -80,7 +57,7 @@
                                 <h3 class="card-title mt-3">@Html.DisplayFor(modelItem => item.Name)</h3>
                                 <p class="card-text mb-3"><i>@Html.DisplayFor(modelItem => item.Description)</i></p>
                                 <h3 style="text-align: right;" class="card-text">@Html.DisplayFor(modelItem => item.Price)$</h3>
-                          @*      <a class="btn-order" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">Add to Cart</a>*@
+                       
                             </div>
                         </div>
                     }
@@ -91,12 +68,12 @@
 
         </div>
     </section>
-    @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-    {*@
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
         <div style="position: fixed; right: 25px; bottom: 25px;" class="text-white">
             <a asp-controller="Menus" asp-action="Create" class="btn-add-new"><i class="bi bi-plus-circle"></i> Add New </a>
         </div>
- @*   }*@
+    }
 
 
 </main>

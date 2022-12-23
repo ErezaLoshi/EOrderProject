@@ -1,0 +1,70 @@
+﻿@using EOrderProject.Data.ViewModels;
+@model LoginVM;
+
+@{
+    ViewData["Title"] = "Login to your account";
+}
+
+<style>
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+        font-size: 15px;
+    }
+
+        .login-form form {
+            margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+
+<section id="hero">
+
+    <div class="carousel-container">
+        <div class="carousel-content">
+
+
+            <div class="login-form">
+                <form asp-action="Login" class="rounded">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger text-center">
+                            @TempData["Error"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <p class="text-center" style="font-size: 30px; color: black;"><b>Log in</b></p>
+                    <div class="form-group m-4">
+                        <input asp-for="EmailAddress" type="text" class="form-control" placeholder="Email">
+                        <span asp-validation-for="EmailAddress" class="text-danger text-left" style="text-align: left !important;"></span>
+                    </div>
+                    <div class="form-group m-4">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                        <span asp-validation-for="Password" class="text-danger text-left" style="text-align: left !important;"></span>
+                    </div>
+                    <div class="form-group m-4">
+                        <input type="submit" value="Log in" class="btn btn-primary">
+                    </div>
+
+                </form>
+                <p style="width: 100% !important;" class="text-center"><a asp-controller="Account" asp-action="Register">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+</section>
