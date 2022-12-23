@@ -12,5 +12,6 @@ namespace EOrderProject.Data
         }
 
         public DbSet<Menu>Menus { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
     }
 }

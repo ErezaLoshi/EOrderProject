@@ -24,6 +24,8 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 //Services Configuration
 builder.Services.AddScoped<IMenusService, MenusService>();
+builder.Services.AddScoped<IStaffsService, StaffsService>();
+
 
 //Authentication and authorization
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
