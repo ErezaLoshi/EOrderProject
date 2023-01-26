@@ -123,9 +123,6 @@ namespace EOrderProject.Controllers
             {
                 error++;
             }
-
-
-            //if (!ModelState.IsValid) return View(staff); 
             
 
             if (error == 0)

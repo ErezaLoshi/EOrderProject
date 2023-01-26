@@ -81,33 +81,25 @@ namespace EOrderProject.Controllers
             var allMenus = await _service.GetAllAsync();
             return View(allMenus);
         }
-       
 
 
 
+        //// GET: Staffs/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+         
+            var menuDetails = await _service.GetByIdAsync(id);
+      
+            if (menuDetails == null) return View("NotFound");
 
-        // GET: Menus/Details/5
 
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        
+            return View(menuDetails);
+        }
 
-        //    if (id == null || _context.Menus == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    var menus = await _context.Menus
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (menus == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(menus);
-        //}
 
         // GET: Menus/Create
+
         public IActionResult Create()
         {
             return View();
@@ -117,7 +109,7 @@ namespace EOrderProject.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        
+
         public async Task<IActionResult> Create([Bind("Id,Image,Name,Description,Price,MenuCategory")] Menu menus, IFormFile ifile, Menu ic)
         {
             int error = 0;
@@ -184,7 +176,6 @@ namespace EOrderProject.Controllers
                 error++;
             }
 
-            if (!ModelState.IsValid) return View(menu);
 
             if (id == menu.Id && error == 0)
             {
@@ -227,7 +218,7 @@ namespace EOrderProject.Controllers
 
         //private bool MenusExists(int id)
         //{
-        //    return _context.Menus.Any(e => e.Id == id);
+        //    return _service.Menus.Any(e => e.Id == id);
         //}
     }
 }
