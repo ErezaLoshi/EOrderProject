@@ -13,5 +13,9 @@ namespace EOrderProject.Data
 
         public DbSet<Menu>Menus { get; set; }
         public DbSet<Staff> Staffs { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

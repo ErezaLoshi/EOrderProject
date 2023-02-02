@@ -1,12 +1,12 @@
 ﻿@model PagedList.IPagedList<EOrderProject.Models.Staff>
 
-
-
-
 @{
     ViewData["Title"] = "Index";
 }
 @using PagedList.Mvc;
+@using PagedList;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h1 style="margin-top: 10%; text-align:center;">Staff</h1>
 
@@ -18,7 +18,17 @@
         <div class="text-center">
             <p style="font-size:25px !important; color: black;">List of all Staff</p>
         </div>
-        <form asp-action="Index" method="get">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @using (Html.BeginForm("Index", "Student", FormMethod.Get))
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+        @*<form asp-action="Index" method="get">
             <div class="form-actions no-color">
                 <p>
                     Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
@@ -26,16 +36,20 @@
                     <a asp-action="Index">Back to Full List</a>
                 </p>
             </div>
-        </form>
+        </form>*@
         <table class="table">
             <thead>
                 <tr class="text-center">
                     <th>Image</th>
                     <th>
-                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+@*                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+*@
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
                     </th>
                     <th>
-                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+@*                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+*@
+                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
                     </th>
                     <th>Actions</th>
                 </tr>
@@ -81,9 +95,10 @@
         </div>
     </div>
 </div>
+
+<br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@*
+@Html.PagedListPager( (IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }) )
 
-@*       @Html.PagedListPager(Model, page => Url.Action("Index",
-        new { page, sortOrder = ViewData.CurrentSort, currentFilter = ViewData.CurrentFilter }))
-
-    *@
+*@

@@ -1,4 +1,5 @@
 using EOrderProject.Data;
+using EOrderProject.Data.Cart;
 using EOrderProject.Data.Services;
 using EOrderProject.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -25,6 +26,13 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 //Services Configuration
 builder.Services.AddScoped<IMenusService, MenusService>();
 builder.Services.AddScoped<IStaffsService, StaffsService>();
+builder.Services.AddScoped<IOrdersService, OrdersService>();
+
+
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+
 
 
 //Authentication and authorization
@@ -56,6 +64,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

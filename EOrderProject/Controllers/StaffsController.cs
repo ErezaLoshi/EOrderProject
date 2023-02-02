@@ -78,22 +78,20 @@ namespace EOrderProject.Controllers
         }
 
         //// GET: Staffs/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null || _context.Staffs == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Details(int id)
+        {
+            //if (id == null || _service.GetByIdAsync == null)
+            //{
+            //    return NotFound();
+            //}
 
-        //    var staff = await _context.Staffs
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (staff == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var staffDetails = await _service.GetByIdAsync(id);
+                //.FirstOrDefaultAsync(m => m.Id == id);
+            if (staffDetails == null)return View ("NotFound");
+            
 
-        //    return View(staff);
-        //}
+            return View(staffDetails);
+        }
 
         // GET: Staffs/Create
         public IActionResult Create()

@@ -1,0 +1,85 @@
+﻿@using EOrderProject.Data.ViewModels;
+@model ShoppingCartVM
+@{
+    ViewData["Title"] = "Shopping Cart Summary";
+}
+
+<section id="hero">
+    <div class="row bg-white p-5 rounded">
+        <div class="col-md-8 offset-2" style="padding-bottom: 1920px; padding-top: 15%">
+            <div class="text-center">
+                <p style="font-size:25px !important; color: black;">List of all your orders</p>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Selected amount</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                    {
+                            <tr>
+                                <td class="align-middle">
+
+                                    <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart"
+                                   asp-route-id="@item.Menu.Id">
+                                        <i class="bi bi-cart-dash"></i>
+                                    </a>
+                                @item.Amount
+                                    <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                                   asp-route-id="@item.Menu.Id">
+                                        <i class="bi bi-cart-plus"></i>
+                                    </a>
+                                </td>
+                                <td class="align-middle">@item.Menu.Name</td>
+                                <td class="align-middle">@item.Menu.Price.ToString("c")</td>
+                                <td class="align-middle">@((item.Amount * item.Menu.Price).ToString("c"))</td>
+                            </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td><b>Total:</b></td>
+                        <td>
+                            @Model.ShoppingCartTotal.ToString("c")
+                        </td>
+
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="text-center mt-4">
+                <div>
+                    <a class="btn btn-outline-primary rounded" style="float: left;" asp-action="CompleteOrder">
+                        Complete order
+                    </a>
+                    <a class="btn btn-outline-primary rounded" style="float: left;" asp-controller="Menus" asp-action="Index">
+                        Add more items
+                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                            <div id="paypal-btn" style="float: right;"></div>
+                    }
+                    else
+                    {
+                            <a class="btn btn-success rounded" style="float: right;" asp-controller="Account" asp-action="Login">
+                                Login to Checkout
+                            </a>
+                    }
+
+                    @*<a class="btn btn-success rounded" style="float: right;" asp-action="CompleteOrder">
+                            Complete order
+                        </a>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

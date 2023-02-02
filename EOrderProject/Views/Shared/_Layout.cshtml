@@ -38,10 +38,11 @@
 
             </nav>
             <br>
-             
-       
 
-        @*    <partial name="_LoginPartial" />*@
+            <ul class="navbar-nav">
+                @await Component.InvokeAsync("ShoppingCartSummary")
+            </ul>
+             
             <partial name="_Identity.cshtml" />
         </div>
     </header>
@@ -81,8 +82,6 @@
     <script src="~/assets/vendor/php-email-form/validate.js"></script>
     <script src="~/assets/js/main.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

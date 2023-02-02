@@ -81,21 +81,23 @@
                             </div>
                                 <h3 class="card-title mt-3">@Html.DisplayFor(modelItem => item.Name)</h3>
                                 <p class="card-text mb-3"><i>@Html.DisplayFor(modelItem => item.Description)</i></p>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <h3 style="text-align: left;" class="card-text">@Html.DisplayFor(modelItem => item.Price)$</h3>
-                                    </div>
+                               @* <div class="row">
                                     <div class="col">
                                         <a  asp-action="Details" asp-route-id="@item.Id" class="text-black" style="float: right"><i class="bi bi-eye-fill ">></i></a>
                                     </div>
                                   
-                                </div>
-                                @*<div>
-                                <a asp-action="Details" asp-route-id="@item.Id" class="text-black" style="text-align:left"><i class="bi bi-eye-fill "></i>></a>
-                                <h3 style="text-align: right;" class="card-text">@Html.DisplayFor(modelItem => item.Price)$</h3>
-                                   
                                 </div>*@
+                                <h3 style="text-align: right;" class="card-text">@Html.DisplayFor(modelItem => item.Price)$</h3>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="btn-order" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">Add to Cart</a>
+                                }
+                                else
+                                {
+                                    <a class="btn-order" asp-controller="Account" asp-action="Login">Add to Cart</a>
+                                }
+
+
 
                             </div>
                         </div>
