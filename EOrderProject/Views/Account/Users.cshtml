@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "List of all users";
+}
+
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+    <script>location.replace("../Home");</script>
+}
+else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <section id="hero">
+        <div class="row bg-white p-5 rounded">
+            <div class="col-md-6 offset-3" style="padding-bottom: 1920px; padding-top: 15%">
+                <div class="text-center">
+                    <p style="font-size:25px !important; color: black;">List of all users</p>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+}
