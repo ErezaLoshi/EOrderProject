@@ -15,7 +15,7 @@ else
 {
    @* User profile section*@
 
-    <div class="dropdown">
+    <div class="dropdown" style="margin-left:1%;margin-right:1%;">
         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
             aria-expanded="false">
             <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
@@ -35,6 +35,9 @@ else
                 <li>
                     <a class="dropdown-item" asp-controller="Staffs" asp-action="Index">
                         <i class="bi bi-people"></i> Staff
+                    </a>
+                     <a class="dropdown-item" asp-controller="Issues" asp-action="Index">
+                        <i class="bi bi-arrow-right-circle-fill"></i>Issues               
                     </a>
                 </li>
               

@@ -51,6 +51,8 @@
 *@
                         @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
                     </th>
+                 
+                   
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -70,6 +72,12 @@
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
+                       @*  <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Issues.Id)
+                        </td>*@
+                      @*   <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Issues.IssueDescription)
+                        </td>*@
                         <td class="align-middle">
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

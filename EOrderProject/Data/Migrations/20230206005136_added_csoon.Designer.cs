@@ -4,6 +4,7 @@ using EOrderProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EOrderProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230206005136_added_csoon")]
+    partial class added_csoon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,11 +259,16 @@ namespace EOrderProject.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IssuesId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IssuesId");
 
                     b.ToTable("Staffs");
                 });
@@ -440,6 +447,17 @@ namespace EOrderProject.Data.Migrations
                     b.Navigation("Menu");
                 });
 
+            modelBuilder.Entity("EOrderProject.Models.Staff", b =>
+                {
+                    b.HasOne("EOrderProject.Models.Issues", "Issues")
+                        .WithMany("Staffs")
+                        .HasForeignKey("IssuesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Issues");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -489,6 +507,11 @@ namespace EOrderProject.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EOrderProject.Models.Issues", b =>
+                {
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("EOrderProject.Models.Order", b =>

@@ -17,5 +17,8 @@ namespace EOrderProject.Data
         public DbSet<OrderItem> OrderItems { get; set; }
 
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Issues> Issues { get; set; }
+
+        public DbSet<ComingSoon> ComingSoon { get; set; }
     }
 }

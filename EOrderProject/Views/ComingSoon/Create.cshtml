@@ -1,8 +1,8 @@
-﻿@model Staff
+﻿@model ComingSoon
 @using EOrderProject.Data.Enums;
 
 @{
-    ViewData["Title"] = "Add new Item";
+    ViewData["Title"] = "Add new ComingSoon Item";
 }
 
 @if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
@@ -13,11 +13,11 @@ else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
     <!-- ======= Hero Section ======= -->
     <section id="hero">
-        <img src="~/assets/img/slide/dark-bg.jpg" class="img-responsive" />
+
         <div class="carousel-container">
             <div class="carousel-content">
 
-                <h2 class="animate__animated animate__fadeInDown"><span>Insert</span> Staff</h2>
+                <h2 class="animate__animated "><span>Insert</span> Item</h2>
                 <div class="row bg-white p-5 rounded shadow-lg justify-content-start">
                     <form asp-action="Create" enctype="multipart/form-data">
                         @if (TempData["ErrorMessage"] != null)
@@ -31,32 +31,27 @@ else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                             <input asp-for="Name" type="text" class="form-control" placeholder="Name">
                             <span asp-validation-for="Name" class="text-danger text-left" style="text-align: left !important;"></span>
                         </div>
+                      
                         <div class="form-group mt-3">
-                            <textarea asp-for="Description" class="form-control" rows="5" placeholder="Description"></textarea>
+                            <textarea asp-for="Description" class="form-control" rows="5" placeholder="Ingredients"></textarea>
                             <span asp-validation-for="Description" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
                         </div>
-
+                      
                         <div class="form-group mt-3">
                             <input required asp-for="Image" accept="image/png,image/jpeg" type="file" class="form-control" name="ifile">
                             <span asp-validation-for="Image" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
                         </div>
-                        @*  <div class="form-group">
-                            <label asp-for="IssuesId" class="control-label"></label>
-                            <input asp-for="IssuesId" class="form-control" />
-                            <span asp-validation-for="IssuesId" class="text-danger"></span>
-
-                          </div>*@
-                       
                         <div class="form-group text-center mt-4">
-                            <a style="float: left !important;" asp-controller="Staffs" asp-action="Index" class="btn-cancel">Cancel</a>
+                            <a style="float: left !important;" asp-controller="ComingSoon" asp-action="Index" class="btn-cancel">Cancel</a>
                             <input style="float: right !important;" value="Create" class="btn-block btn-add-new" type="submit">
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+
+
     <!-- End Hero -->
 }
-

@@ -1,16 +1,13 @@
 ﻿using EOrderProject.Data.Base;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
 namespace EOrderProject.Models
 {
-    public class Staff:IEntityBase
+    public class ComingSoon:IEntityBase
     {
-
         [Key]
         public int Id { get; set; }
-
 
         [Display(Name = "Image")]
         public string Image { get; set; }
@@ -20,12 +17,7 @@ namespace EOrderProject.Models
         public string Name { get; set; }
 
         [Display(Name = "Description")]
-        [Required(ErrorMessage = "Please enter a desciption!")]
         public string Description { get; set; }
-
-      //  public int IssuesId { get; set; }
-       // [ForeignKey("IssuesId")]
-       // public Issues Issues { get; set; }
 
     }
 }

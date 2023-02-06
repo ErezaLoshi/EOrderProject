@@ -80,13 +80,12 @@ namespace EOrderProject.Controllers
         //// GET: Staffs/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            //if (id == null || _service.GetByIdAsync == null)
-            //{
-            //    return NotFound();
-            //}
-
             var staffDetails = await _service.GetByIdAsync(id);
-                //.FirstOrDefaultAsync(m => m.Id == id);
+
+          //  var staffDetails = await _service.Include
+            //  (x=>x.Issue)
+          //     var staffDetails = Staff.Claims.Where(x => x.Issue == "StaffId").FirstOrDefaultAsync();
+               // .FirstOrDefaultAsync(m => m.Id == id);
             if (staffDetails == null)return View ("NotFound");
             
 
@@ -104,7 +103,7 @@ namespace EOrderProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Image,Name,Description")] Staff staff, IFormFile ifile, Staff ic)
+        public async Task<IActionResult> Create([Bind("Image,Name,Description,IssuesId")] Staff staff, IFormFile ifile, Staff ic)
         {
             int error = 0;
             string imgext = Path.GetExtension(ifile.FileName);
@@ -153,7 +152,7 @@ namespace EOrderProject.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,Name,Description")] Staff staff, IFormFile ifile, Staff ic)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,Name,Description,IssuesId")] Staff staff, IFormFile ifile, Staff ic)
         {
             int error = 0;
             string imgext = Path.GetExtension(ifile.FileName);
