@@ -29,6 +29,7 @@ builder.Services.AddScoped<IStaffsService, StaffsService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IIssuesService, IssuesService>();
 builder.Services.AddScoped<IComingSoonService, ComingSoonService>();
+builder.Services.AddScoped<IPikatEShitjesService, PikatEShitjesService>();
 
 
 
