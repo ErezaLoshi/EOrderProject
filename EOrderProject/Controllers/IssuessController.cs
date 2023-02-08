@@ -14,6 +14,8 @@ namespace EOrderProject.Controllers
 {
     public class IssuessController : Controller
     {
+
+
         private readonly IIssueService _service;
         public IssuessController(IIssueService service)
         {
@@ -22,10 +24,24 @@ namespace EOrderProject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allIssues = await _service.GetAllAsync();
-            return View(allIssues);
+            var allIssuess = await _service.GetAllAsync();
+            return View(allIssuess);
         }
-        //   GET: Menus/Create
+
+
+
+
+        //   GET: Menus/Details/5
+
+        //public async Task<IActionResult> Details(int? id)
+        //{
+
+        //}
+
+
+
+
+        //        GET: Menus/Create
         public IActionResult Create()
         {
             return View();
@@ -36,11 +52,11 @@ namespace EOrderProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Issues,Suggestion")] Issue Issue)
+        public async Task<IActionResult> Create([Bind("Id,Image,Name,Description,Price,MenuCategory")] Issue issue)
         {
             if (!ModelState.IsValid)
             {
-                return View(Issue);
+                return View(issue);
             }
             return RedirectToAction(nameof(Index));
 
@@ -49,19 +65,19 @@ namespace EOrderProject.Controllers
         //GET: menus/edit/$id
         public async Task<IActionResult> Edit(int id)
         {
-            var IssuesDetails = await _service.GetByIdAsync(id);
-            if (IssuesDetails == null) return View("NotFound");
-            return View(IssuesDetails);
+            var issueDetails = await _service.GetByIdAsync(id);
+            if (issueDetails == null) return View("NotFound");
+            return View(issueDetails);
         }
-        
-[HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Issues,Suggestion")] Issue Issue)
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,Name,Description,Price,MenuCategory")] Issue issue)
         {
             if (!ModelState.IsValid)
             {
-                return View(Issue);
+                return View(issue);
             }
-            await _service.UpdateAsync(id, Issue);
+            await _service.UpdateAsync(id, issue);
             return RedirectToAction(nameof(Index));
 
         }
@@ -70,9 +86,9 @@ namespace EOrderProject.Controllers
         // GET: menus/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            var IssuesDetails = await _service.GetByIdAsync(id);
-            if (IssuesDetails == null) return View("Not found");
-            return View(IssuesDetails);
+            var issue = await _service.GetByIdAsync(id);
+            if (issue == null) return View("Not found");
+            return View(issue);
         }
 
         // POST: menus/Delete/5
@@ -81,12 +97,109 @@ namespace EOrderProject.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
 
-            var IssueDetails = await _service.GetByIdAsync(id);
-            if (IssueDetails == null) return View("Not found");
+            var issue = await _service.GetByIdAsync(id);
+            if (issue == null) return View("Not found");
+
 
             await _service.DeleteAsync(id);
-            TempData["AlertMessage"] = "Item deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        private readonly IIssueService _service;
+//        public IssuessController(IIssueService service)
+//        {
+//            _service = service;
+
+//        }
+//        public async Task<IActionResult> Index()
+//        {
+//            var allIssuess = await _service.GetAllAsync();
+//            return View(allIssuess);
+//        }
+//        //   GET: Menus/Create
+//        public IActionResult Create()
+//        {
+//            return View();
+//        }
+
+//        // POST: Menus/Create
+//        // To protect from overposting attacks, enable the specific properties you want to bind to.
+//        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Issues,Suggestion")] Issue issue)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return View(issue);
+//            }
+//            return RedirectToAction(nameof(Index));
+
+//        }
+
+//        //GET: menus/edit/$id
+//        public async Task<IActionResult> Edit(int id)
+//        {
+//            var IssueDetails = await _service.GetByIdAsync(id);
+//            if (IssueDetails == null) return View("NotFound");
+//            return View(IssueDetails);
+//        }
+        
+//[HttpPost]
+//        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Issues,Suggestion")] Issue issue)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return View(issue);
+//            }
+//            await _service.UpdateAsync(id, issue);
+//            return RedirectToAction(nameof(Index));
+
+//        }
+
+
+//        // GET: menus/Delete/5
+//        public async Task<IActionResult> Delete(int id)
+//        {
+//            var IssueDetails = await _service.GetByIdAsync(id);
+//            if (IssueDetails == null) return View("Not found");
+//            return View(IssueDetails);
+//        }
+
+//        // POST: menus/Delete/5
+//        [HttpPost, ActionName("Delete")]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> DeleteConfirmed(int id)
+//        {
+
+//            var IssueDetails = await _service.GetByIdAsync(id);
+//            if (IssueDetails == null) return View("Not found");
+
+//            await _service.DeleteAsync(id);
+//            TempData["AlertMessage"] = "Item deleted successfully!";
+//            return RedirectToAction(nameof(Index));
+//        }
+//    }
+//}

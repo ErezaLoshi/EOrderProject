@@ -27,5 +27,6 @@ namespace EOrderProject.Data
         public DbSet<PikatEShitjes> PikatEShitjes { get; set; }
 
         public DbSet<Issue> Issuess { get; set; }
+        public DbSet<Reports> Reports { get; set; }
     }
 }

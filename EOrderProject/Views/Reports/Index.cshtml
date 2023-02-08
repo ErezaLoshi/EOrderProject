@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Reports>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="margin-top: 10%; text-align:center;">Be free to inform us!</h1>
+
+
+<!-- ======= Hero Section ======= -->
+
+<div class="row bg-white p-5 rounded">
+    <div class="col-md-8 offset-2">
+        <div class="text-center">
+            <p style="font-size:25px !important; color: black;">List of all Staff</p>
+        </div>
+     
+        @using (Html.BeginForm("Index", "Student", FormMethod.Get))
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+  
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>Image</th>
+                    <th>
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
+                    </th>
+                 
+                   
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                      
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Issues)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Suggestion)
+                        </td>
+                        <td class="align-middle">
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-center mt-4">
+            <div>
+
+                <a class="btn btn-success rounded" style="float: right;" asp-controller="Reports" asp-action="Create">
+                    Insert
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
