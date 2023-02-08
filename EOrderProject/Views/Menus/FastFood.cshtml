@@ -26,7 +26,30 @@
                     </ul>
                 </div>
             </div>
+            @*searchi*@
 
+            <form asp-action="Index" method="get">
+                <div class="form-actions no-color " style="margin-left:27%">
+                    <p>
+                        Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                        <input type="submit" value="Search" class="btn btn-block" /> |
+                        <a asp-action="Index">Back to Full List</a>
+                    </p>
+                </div>
+            </form>
+            @*filteri*@
+           
+            <div class="row px-4 mb-2 border">
+                <div class="col-6 text-center px-0 ">
+
+                    <div class="block py-"><a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a></div>
+                </div>
+                <div class="col-6 text-center px-0 ">
+                    <div class="block py-1">
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price</a>
+                    </div>
+                </div>
+                </div>
             <div id="menu" class="row mt-4 justify-content-center">
                 @if (TempData["AlertMessage"] != null)
                 {
@@ -51,14 +74,31 @@
 
 
                             <div class="box">
-                                <div class="" style="position: relative; overflow: hidden; padding-bottom: 100%;">
+                                <div class="" style="position: relative; overflow: hidden; padding-bottom: 60%;padding-top:10%">
+                                    
                                     <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" style=" position: absolute; max-width: 100%; max-height: 100%; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);" alt="">
                                 </div>
                                 <h3 class="card-title mt-3">@Html.DisplayFor(modelItem => item.Name)</h3>
                                 <p class="card-text mb-3"><i>@Html.DisplayFor(modelItem => item.Description)</i></p>
-                                <h3 style="text-align: right;" class="card-text">@Html.DisplayFor(modelItem => item.Price)$</h3>
-                                <a class="btn-order" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 style="text-align: left;" class="card-text">@Html.DisplayFor(modelItem => item.Price)$</h3>
+                                    </div>
+                                    <div class="col">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="text-black" style="float: right"><i class="bi bi-eye-fill ">></i></a>
+                                    </div>
 
+                                </div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+
+                                    <a class="btn-order" asp-controller="Orders" style="margin-left:18%;margin-top:10%;" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">Add to Cart</a>
+
+                                }
+                                else
+                                {
+                                    <a class="btn-order" asp-controller="Account" asp-action="Login">Add to Cart</a>
+                                }
                        
                             </div>
                         </div>
