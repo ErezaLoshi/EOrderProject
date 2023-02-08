@@ -1,45 +1,49 @@
-﻿@model EOrderProject.Models.Reports
+﻿@model Reports
+@using EOrderProject.Data.Enums;
+
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Item";
+}
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+    <script>location.replace("../../Account/Login");</script>
 }
 
-<h1>Delete</h1>
+<!-- ======= Hero Section ======= -->
+<section id="hero">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Reports</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Issues)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Issues)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Suggestion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Suggestion)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+    <div class="carousel-container">
+        <div class="carousel-content">
+            <h2 class="animate__animated animate__fadeInDown"><span>Delete</span> Item</h2>
+            <div class="row bg-white p-5 rounded shadow-lg justify-content-start">
+                <form asp-action="Delete">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group mt-1">
+                        <input disabled asp-for="Name" type="text" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger text-left" style="text-align: left !important;"></span>
+                    </div>
+
+                    <div class="form-group mt-1">
+                        <textarea disabled asp-for="Surname" class="form-control" placeholder="Surname"></textarea>
+                        <span asp-validation-for="Surname" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
+                    </div>
+
+                    <div class="form-group mt-1">
+                        <textarea disabled asp-for="Issues" class="form-control" placeholder=" Issues"></textarea>
+                        <span asp-validation-for="Issues" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
+                    </div>
+                    <div class="form-group mt-1">
+                        <textarea disabled asp-for="Suggestion" class="form-control" placeholder=" Suggestion"></textarea>
+                        <span asp-validation-for="Suggestion" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
+                    </div>
+                    <div class="form-group text-center mt-4">
+                        <a style="float: left !important;" asp-controller="Reports" asp-action="Index" class="btn-cancel">Cancel</a>
+                        <input style="float: right !important;" value="Delete" class="btn-delete" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Hero -->

@@ -1,48 +1,69 @@
-﻿@model EOrderProject.Models.Reports
+﻿@model Reports
+@using EOrderProject.Data.Enums;
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add new Item";
 }
 
-<h1>Create</h1>
-
-<h4>Reports</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Issues" class="control-label"></label>
-                <input asp-for="Issues" class="form-control" />
-                <span asp-validation-for="Issues" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion" class="control-label"></label>
-                <input asp-for="Suggestion" class="form-control" />
-                <span asp-validation-for="Suggestion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+    <script>location.replace("../Account/Login");</script>
 }
+else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <img src="~/assets/img/slide/dark-bg.jpg" class="img-responsive" />
+        <div class="carousel-container">
+            <div class="carousel-content">
+
+                <h2 class="animate__animated animate__fadeInDown"><span>Insert</span> Report</h2>
+                <div class="row bg-white p-5 rounded shadow-lg justify-content-start">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger text-center">
+                                @TempData["ErrorMessage"]
+                            </div>
+                        }
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <div class="form-group mt-3">
+
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+
+                            <label asp-for="Surname" class="control-label"></label>
+                            <input asp-for="Surname" class="form-control" />
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+
+                            <label asp-for="Issues" class="control-label"></label>
+                            <input asp-for="Issues" class="form-control" />
+                            <span asp-validation-for="Issues" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+
+                            <label asp-for="Suggestion" class="control-label"></label>
+                            <input asp-for="Suggestion" class="form-control" />
+                            <span asp-validation-for="Suggestion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <a style="float: left !important;" asp-controller="Reports" asp-action="Index" class="btn-cancel">Cancel</a>
+                            <input style="float: right !important;" value="Create" class="btn-block btn-add-new" type="submit">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero -->
+}
+
+
+

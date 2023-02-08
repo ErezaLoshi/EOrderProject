@@ -1,49 +1,54 @@
-﻿@model EOrderProject.Models.Reports
+﻿@model Reports
+@using EOrderProject.Data.Enums;
+
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Item";
+}
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+    <script>location.replace("../../Account/Login");</script>
 }
 
-<h1>Edit</h1>
+<!-- ======= Hero Section ======= -->
+<section id="hero">
 
-<h4>Reports</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="carousel-container">
+        <div class="carousel-content">
+            <h2 class="animate__animated animate__fadeInDown"><span>Edit</span> Item</h2>
+            <div class="row bg-white p-5 rounded shadow-lg justify-content-start">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger text-center">
+                            @TempData["ErrorMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group mt-3">
+                        <input asp-for="Name" type="text" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger text-left" style="text-align: left !important;"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea asp-for="Surname" class="form-control" placeholder="Surname"></textarea>
+                        <span asp-validation-for="Surname" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea asp-for="Issues" class="form-control" placeholder="Issues"></textarea>
+                        <span asp-validation-for="Issues" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea asp-for="Suggestion" class="form-control" placeholder="Suggestion"></textarea>
+                        <span asp-validation-for="Suggestion" class="text-danger text-left" style="justify-content: flex-start !important;"></span>
+                    </div>
+                    <div class="form-group text-center mt-4">
+                        <a style="float: left !important;" asp-controller="Reports" asp-action="Index" class="btn-cancel">Cancel</a>
+                        <input style="float: right !important; " value="Edit" class="btn-block btn-add-new" type="submit">
+                    </div>
+
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Issues" class="control-label"></label>
-                <input asp-for="Issues" class="form-control" />
-                <span asp-validation-for="Issues" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion" class="control-label"></label>
-                <input asp-for="Suggestion" class="form-control" />
-                <span asp-validation-for="Suggestion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</section>
+<!-- End Hero -->
