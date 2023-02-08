@@ -20,8 +20,12 @@ namespace EOrderProject.Data
         public DbSet<Issues> Issues { get; set; }
         public DbSet<Restaurant>Restaurants { get; set; }
         public DbSet<Pika>Pikat  { get; set; }
+        public DbSet<Pikat> Pikas { get; set; }
+        public DbSet<Restauranti> Restaurantis { get; set; }
         public DbSet<ComingSoon> ComingSoon { get; set; }
 
         public DbSet<PikatEShitjes> PikatEShitjes { get; set; }
+
+        public DbSet<Issue> Issuess { get; set; }
     }
 }

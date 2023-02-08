@@ -4,6 +4,7 @@ using EOrderProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EOrderProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230208191753_added_issueagain")]
+    partial class added_issueagain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,7 +144,7 @@ namespace EOrderProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Issuess");
+                    b.ToTable("Issues");
                 });
 
             modelBuilder.Entity("EOrderProject.Models.Issues", b =>
@@ -159,7 +161,7 @@ namespace EOrderProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Issues");
+                    b.ToTable("Issuess");
                 });
 
             modelBuilder.Entity("EOrderProject.Models.Menu", b =>

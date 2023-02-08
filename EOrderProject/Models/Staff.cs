@@ -23,9 +23,6 @@ namespace EOrderProject.Models
         [Required(ErrorMessage = "Please enter a desciption!")]
         public string Description { get; set; }
 
-      //  public int IssuesId { get; set; }
-       // [ForeignKey("IssuesId")]
-       // public Issues Issues { get; set; }
 
     }
 }

@@ -4,6 +4,7 @@ using EOrderProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EOrderProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230207171717_added_pikat_res")]
+    partial class added_pikat_res
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,35 +118,6 @@ namespace EOrderProject.Data.Migrations
                     b.ToTable("ComingSoon");
                 });
 
-            modelBuilder.Entity("EOrderProject.Models.Issue", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Issues")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Suggestion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Issuess");
-                });
-
             modelBuilder.Entity("EOrderProject.Models.Issues", b =>
                 {
                     b.Property<int>("Id")
@@ -245,27 +218,6 @@ namespace EOrderProject.Data.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("EOrderProject.Models.Pika", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Qyteti")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Pikat");
-                });
-
             modelBuilder.Entity("EOrderProject.Models.Pikat", b =>
                 {
                     b.Property<int>("Id")
@@ -285,54 +237,6 @@ namespace EOrderProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pikas");
-                });
-
-            modelBuilder.Entity("EOrderProject.Models.PikatEShitjes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PikatEShitjes");
-                });
-
-            modelBuilder.Entity("EOrderProject.Models.Restaurant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PikaId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PikaId");
-
-                    b.ToTable("Restaurants");
                 });
 
             modelBuilder.Entity("EOrderProject.Models.Restauranti", b =>
@@ -569,17 +473,6 @@ namespace EOrderProject.Data.Migrations
                     b.Navigation("Menu");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("EOrderProject.Models.Restaurant", b =>
-                {
-                    b.HasOne("EOrderProject.Models.Pika", "Pika")
-                        .WithMany()
-                        .HasForeignKey("PikaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pika");
                 });
 
             modelBuilder.Entity("EOrderProject.Models.Restauranti", b =>

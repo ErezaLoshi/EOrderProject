@@ -18,9 +18,7 @@
         <div class="text-center">
             <p style="font-size:25px !important; color: black;">List of all Staff</p>
         </div>
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+     
         @using (Html.BeginForm("Index", "Student", FormMethod.Get))
         {
             <p>
@@ -42,13 +40,9 @@
                 <tr class="text-center">
                     <th>Image</th>
                     <th>
-@*                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-*@
                         @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter })
                     </th>
                     <th>
-@*                        @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-*@
                         @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter=ViewBag.CurrentFilter })
                     </th>
                  
@@ -72,12 +66,6 @@
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
-                       @*  <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Issues.Id)
-                        </td>*@
-                      @*   <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Issues.IssueDescription)
-                        </td>*@
                         <td class="align-middle">
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -95,10 +83,6 @@
                     Insert
                 </a>
 
-
-                @*<a class="btn btn-success rounded" style="float: right;" asp-action="CompleteOrder">
-                Complete order
-                </a>*@
             </div>
         </div>
     </div>

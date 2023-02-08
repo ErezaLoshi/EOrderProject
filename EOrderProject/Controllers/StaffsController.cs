@@ -74,7 +74,7 @@ namespace EOrderProject.Controllers
             int pageNumber = (page ?? 1);
 
             return View(staffs.ToPagedList( pageNumber, pageSize));         
-            //return View(staffs);
+           
         }
 
         //// GET: Staffs/Details/5

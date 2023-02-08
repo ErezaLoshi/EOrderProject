@@ -8,13 +8,13 @@ namespace EOrderProject.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Staffs_Issues_IssuesId",
-                table: "Staffs");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Staffs_Issues_IssuesId",
+            //    table: "Staffs");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Staffs_IssuesId",
-                table: "Staffs");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Staffs_IssuesId",
+            //    table: "Staffs");
 
             migrationBuilder.DropColumn(
                 name: "IssuesId",
@@ -35,13 +35,13 @@ namespace EOrderProject.Data.Migrations
                 table: "Staffs",
                 column: "IssuesId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Staffs_Issues_IssuesId",
-                table: "Staffs",
-                column: "IssuesId",
-                principalTable: "Issues",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Staffs_Issues_IssuesId",
+            //    table: "Staffs",
+            //    column: "IssuesId",
+            //    principalTable: "Issues",
+            //    principalColumn: "Id",
+            //    onDelete: ReferentialAction.Cascade);
         }
     }
 }

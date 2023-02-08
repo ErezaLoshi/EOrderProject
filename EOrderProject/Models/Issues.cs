@@ -11,6 +11,5 @@ namespace EOrderProject.Models
 
         public string IssueDescription { get; set; }
 
-     
     }
 }
